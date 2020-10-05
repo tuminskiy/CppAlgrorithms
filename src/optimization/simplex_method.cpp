@@ -66,7 +66,7 @@ int Simplex::calculate()
   if (iter_count_ > 1000)
     return -1;
 
-  return matrix_.back()[1]; 
+  return static_cast<int>(matrix_.back()[1]);
 }
 
 void Simplex::simplex()
