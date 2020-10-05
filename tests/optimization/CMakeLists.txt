@@ -15,19 +15,16 @@ set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 set(OPTIMIZATION_DIR ../../src/optimization)
-set(UTIL_DIR ../../src/util)
 
 set(SRC
   startup_test.cpp
   test_optimization.cpp
   ${OPTIMIZATION_DIR}/simplex_method.cpp
-  ${UTIL_DIR}/range_offset.cpp
 )
 
 target_include_directories(${TESTS_OPTIMIZATION}
   PRIVATE
     ${OPTIMIZATION_DIR}
-    ${UTIL_DIR}
     ${Boost_INCLUDE_DIR}
 )
 
