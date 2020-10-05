@@ -3,3 +3,5 @@ cmake_minimum_required(VERSION 3.5)
 add_subdirectory(sort)
 
 add_subdirectory(optimization)
+
+add_subdirectory(util)
