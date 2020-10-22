@@ -96,3 +96,20 @@ BOOST_AUTO_TEST_CASE(container_remove)
   BOOST_CHECK(clist[0] == 1);
   BOOST_CHECK(clist[1] == 3);
 }
+
+BOOST_AUTO_TEST_CASE(container_iterator)
+{
+  CList<int> clist;
+
+  clist.push_back(1);
+  clist.push_back(2);
+
+  auto first = clist.begin();
+  BOOST_CHECK(*first == 1);
+
+  auto last = clist.end();
+  BOOST_CHECK(*last == 2);
+
+  first++;
+  BOOST_CHECK(first == last);
+}

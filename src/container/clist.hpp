@@ -38,6 +38,28 @@ class CList
   size_t size_;
 
 public:
+  class Iterator
+  {
+    CListNodePtr<T> node_;
+
+  public:
+    explicit Iterator(CListNodePtr<T> node);
+    
+    Iterator& operator= (CListNodePtr<T> node);
+
+    // prefix 
+    Iterator& operator++ ();
+    Iterator& operator-- ();
+
+    // postfix
+    Iterator operator++ (int);
+    Iterator operator-- (int); 
+
+    bool operator== (const Iterator& it);
+    bool operator!= (const Iterator& it);
+    T& operator* ();
+  };
+
   explicit CList();
   ~CList() = default;
 
@@ -45,6 +67,9 @@ public:
 
   T& front();
   T& back();
+
+  Iterator begin();
+  Iterator end();
 
   void push_back(const T& value);
   void push_front(const T& value);
@@ -61,6 +86,61 @@ private:
 };
 
 
+// CList::Iterator
+template <class T>
+CList<T>::Iterator::Iterator(CListNodePtr<T> node) : node_(node) { }
+
+template <class T>
+typename CList<T>::Iterator& CList<T>::Iterator::operator= (CListNodePtr<T> node) { node_ = node; }
+
+// prefix 
+template <class T>
+typename CList<T>::Iterator& CList<T>::Iterator::operator++ ()
+{
+  if (node_)
+    node_ = node_->next;
+  return *this;
+}
+
+template <class T>
+typename CList<T>::Iterator& CList<T>::Iterator::operator-- ()
+{
+  if (node_)
+    node_ = node_->prev;
+  return *this;
+}
+
+// postfix
+template <class T>
+typename CList<T>::Iterator CList<T>::Iterator::operator++ (int)
+{
+  auto it = *this;
+  ++*this;
+  return it;
+}
+
+template <class T>
+typename CList<T>::Iterator CList<T>::Iterator::operator-- (int)
+{
+  auto it = *this;
+  --*this;
+  return it;
+}
+
+template <class T>
+bool CList<T>::Iterator::operator== (const CList<T>::Iterator& it) { return node_ == it.node_; }
+
+template <class T>
+bool CList<T>::Iterator::operator!= (const CList<T>::Iterator& it) { return node_ != it.node_; }
+
+template <class T>
+T& CList<T>::Iterator::operator* ()
+{
+  return node_->value;
+}
+
+
+// CList
 template <class T>
 CList<T>::CList() : head_(nullptr), tail_(nullptr), size_(0) { }
 
@@ -84,6 +164,12 @@ T& CList<T>::front() { return head_->value; }
 
 template <class T>
 T& CList<T>::back() { return tail_->value; }
+
+template <class T>
+typename CList<T>::Iterator CList<T>::begin() { return Iterator(head_); }
+
+template <class T>
+typename CList<T>::Iterator CList<T>::end() { return Iterator(tail_); }
 
 template <class T>
 void CList<T>::push_back(const T& value)
