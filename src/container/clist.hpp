@@ -73,7 +73,7 @@ public:
   Iterator begin();
   Iterator end();
 
-  void insert(Iterator it, const T& value);
+  Iterator insert(Iterator it, const T& value);
   void erase(Iterator it);
 };
 
@@ -304,7 +304,7 @@ template <class T>
 typename CList<T>::Iterator CList<T>::end() { return Iterator(this, nullptr); }
 
 template <class T>
-void CList<T>::insert(CList<T>::Iterator it, const T& value)
+typename CList<T>::Iterator CList<T>::insert(CList<T>::Iterator it, const T& value)
 {
 	auto node = new CListNode<T>(value);
 
@@ -319,6 +319,8 @@ void CList<T>::insert(CList<T>::Iterator it, const T& value)
     it.node_->prev = node;
 
   ++size_;
+
+  return Iterator(this, node);
 }
 
 template <class T>
