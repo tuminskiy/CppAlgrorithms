@@ -85,3 +85,17 @@ BOOST_AUTO_TEST_CASE(container_begin_end) // 6
   BOOST_CHECK(first != last);
   BOOST_CHECK(!(first + 1 != last));
 }
+
+BOOST_AUTO_TEST_CASE(container_insert_erase) // 7
+{
+  CList<int> clist;
+
+  clist.push_back(1);
+  clist.push_back(3);
+
+  clist.insert(clist.begin(), 2);
+  BOOST_CHECK(clist[1] == 2);
+
+  clist.erase(clist.begin() + 1);
+  BOOST_CHECK(clist[1] == 3);
+}
