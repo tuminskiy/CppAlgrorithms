@@ -93,9 +93,9 @@ BOOST_AUTO_TEST_CASE(container_insert_erase) // 7
   clist.push_back(1);
   clist.push_back(3);
 
-  clist.insert(clist.begin(), 2);
-  BOOST_CHECK(clist[1] == 2);
+  auto it = clist.insert(clist.begin(), 2);
+  BOOST_CHECK(*it == 2);
 
-  clist.erase(clist.begin() + 1);
+  clist.erase(it);
   BOOST_CHECK(clist[1] == 3);
 }
