@@ -4,14 +4,14 @@
 
 using namespace Container;
 
-BOOST_AUTO_TEST_CASE(container_size) // 1
+BOOST_AUTO_TEST_CASE(container_clist_size) // 1
 {
   CList<int> clist;
 
   BOOST_CHECK(clist.size() == 0);
 }
 
-BOOST_AUTO_TEST_CASE(container_push) // 2
+BOOST_AUTO_TEST_CASE(container_clist_push) // 2
 {
   CList<int> clist;
 
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE(container_push) // 2
   BOOST_CHECK(clist.size() == 2);
 }
 
-BOOST_AUTO_TEST_CASE(container_pop) // 3
+BOOST_AUTO_TEST_CASE(container_clist_pop) // 3
 {
   CList<int> clist;
 
@@ -35,7 +35,7 @@ BOOST_AUTO_TEST_CASE(container_pop) // 3
   BOOST_CHECK(clist.size() == 0);
 }
 
-BOOST_AUTO_TEST_CASE(container_operator_square_brackets) // 4
+BOOST_AUTO_TEST_CASE(container_clist_operator_square_brackets) // 4
 {
   CList<int> clist;
 
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(container_operator_square_brackets) // 4
   BOOST_CHECK(clist[2] == 3);
 }
 
-BOOST_AUTO_TEST_CASE(container_front_back) // 5
+BOOST_AUTO_TEST_CASE(container_clist_front_back) // 5
 {
   CList<int> clist;
 
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(container_front_back) // 5
   BOOST_CHECK(clist.back() == 1);
 }
 
-BOOST_AUTO_TEST_CASE(container_begin_end) // 6
+BOOST_AUTO_TEST_CASE(container_clist_begin_end) // 6
 {
   CList<int> clist;
 
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE(container_begin_end) // 6
   BOOST_CHECK(!(first + 1 != last));
 }
 
-BOOST_AUTO_TEST_CASE(container_insert_erase) // 7
+BOOST_AUTO_TEST_CASE(container_clist_insert_erase) // 7
 {
   CList<int> clist;
 

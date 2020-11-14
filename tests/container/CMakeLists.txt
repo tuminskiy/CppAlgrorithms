@@ -18,7 +18,8 @@ set(CONTAINER_DIR ../../src/container)
 
 set(SRC
   startup_test.cpp
-  test_container.cpp
+  test_clist.cpp
+  test_flat_bst.cpp
 )
 
 target_include_directories(${TESTS_CONTAINER}
