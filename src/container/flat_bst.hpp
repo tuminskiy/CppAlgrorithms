@@ -106,9 +106,9 @@ void FlatBst<T>::lnr_iterate(size_t index, Func f)
   if (!is_valid(index))
     return;
 
-  nlr_iterate(left(index), f);
+  lnr_iterate(left(index), f);
   f(data_[index].value());
-  nlr_iterate(right(index), f);
+  lnr_iterate(right(index), f);
 }
 
 template <class T> template <class Func>
@@ -117,8 +117,8 @@ void FlatBst<T>::lrn_iterate(size_t index, Func f)
   if (!is_valid(index))
     return;
 
-  nlr_iterate(left(index), f);
-  nlr_iterate(right(index), f);
+  lrn_iterate(left(index), f);
+  lrn_iterate(right(index), f);
   f(data_[index].value());
 }
 
