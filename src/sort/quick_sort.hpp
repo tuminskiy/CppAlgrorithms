@@ -15,10 +15,10 @@ void quick_sort(std::queue<T>& q)
   std::queue<T> equal; // values equal pivot
   std::queue<T> rhs; // values greater than pivot
 
-  const auto pivot = q.front();
+  const auto& pivot = q.front();
   
   while (!q.empty()) {
-    const auto value = q.front();
+    const auto& value = q.front();
 
     if (value < pivot)
       lhs.push(value);
