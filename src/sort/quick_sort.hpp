@@ -8,14 +8,14 @@ namespace Sort
 template <class T>
 void quick_sort(std::queue<T>& q)
 {
-  if (q.empty())
+  if (q.size() < 2)
     return;
 
   std::queue<T> lhs; // values less than pivot
   std::queue<T> equal; // values equal pivot
   std::queue<T> rhs; // values greater than pivot
 
-  const auto pivot = q.back();
+  const auto pivot = q.front();
   
   while (!q.empty()) {
     const auto value = q.front();
