@@ -20,6 +20,7 @@ set(SRC
   startup_test.cpp
   test_clist.cpp
   test_flat_bst.cpp
+  test_flat_rbst.cpp
 )
 
 target_include_directories(${TESTS_CONTAINER}
