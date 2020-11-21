@@ -133,7 +133,7 @@ bool FlatRbst<T>::is_valid(size_t index) const
 template <class T>
 size_t FlatRbst<T>::get_size(size_t index) const
 {
-  return data_[index] ? data_[index]->size : 0;
+  return is_valid(index) ? data_[index]->size : 0;
 }
 
 template <class T>
@@ -157,6 +157,8 @@ void FlatRbst<T>::insert(size_t index, const T& value)
     insert(value, left(index));
   else if (data_[index] < value)
     insert(value, right(index));
+
+  fix_size(index);
 }
 
 template <class T>
