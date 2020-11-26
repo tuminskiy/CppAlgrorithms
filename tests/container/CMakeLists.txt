@@ -21,6 +21,7 @@ set(SRC
   test_clist.cpp
   test_flat_bst.cpp
   test_flat_rbst.cpp
+  test_graph.cpp ${CONTAINER_DIR}/graph.cpp
 )
 
 target_include_directories(${TESTS_CONTAINER}
